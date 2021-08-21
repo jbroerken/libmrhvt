@@ -1,0 +1,50 @@
+<MRHBF_1>
+
+####################
+#  Base Sentences  #
+####################
+
+<Sentence>{
+    <String><%WG1, %WG2.>
+    <Chance><1.0>
+}
+
+############################
+#  World Group Placements  #
+############################
+
+<Placement>{
+    <String><%WG1>
+    <WordGroup><0>
+}
+    
+<Placement>{
+    <String><%WG2>
+    <WordGroup><1>
+}
+
+##################
+#  Word Group 0  #
+##################
+
+<Word>{
+    <String><How are you doing>
+    <Chance><0.8>
+    <WordGroup><0>
+}
+
+<Word>{
+    <String><Hello>
+    <Chance><0.8>
+    <WordGroup><0>
+}
+
+##################
+#  Word Group 1  #
+##################
+
+<Word>{
+    <String><World>
+    <Chance><1.0>
+    <WordGroup><1>
+}

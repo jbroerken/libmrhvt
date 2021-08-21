@@ -1,0 +1,16 @@
+<MRHBF_1>
+
+#####################
+#  Bad Word Filter  #
+#####################
+
+<CleanSet>{
+    <0><NaughtyWordA>
+    <1><Not a nice sentence>
+    <2><Another rude sentence>
+}
+
+<CleanSet>{
+    <0><Rude Statement>
+    <1><BadWord>
+}

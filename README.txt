@@ -1,11 +1,12 @@
-# libmrhvt
+#####################
+#                   #
+#  libmrhvt ReadMe  #
+#                   #
+#####################
 
-<p align="center">
-<img width="100%" height="100%" src="/doc/source/banner.png">
-</p>
-
-
-## About
+##
+# About
+##
 
 The libmrhvt library implements the files and functions used for voice and text based interactions. 
 It provides the management for input triggers, output generators and clean list files. 
@@ -13,52 +14,60 @@ Also included are string comparison and string manipulation functions to build, 
 input and output strings based on events.
 
 
-## Requirements
+##
+# Requirements
+##
 
-#### Compilation
-
+Compilation:
+------------
 This project is built using CMake. You can find CMake here:
 
 https://cmake.org/
 
-#### Library Dependencies
-
+Library Dependencies:
+---------------------
 This project requires other libraries and headers to function:
 
-Dependency | Source
----------- | ------
-libmrhbf | https://github.com/jbroerken/libmrhbf/
-mrhshared | https://github.com/jbroerken/mrhshared/
+Dependency List:
+libmrhbf: https://github.com/jbroerken/libmrhbf/
+mrhshared: https://github.com/jbroerken/mrhshared/
 
 For more information about the requirements, check the "Building" section found in the documentation.
 
 
-## Documentation
+##
+# Documentation
+##
 
 All documentation is build with sphinx-doc using the Read The Docs theme.
 To build the documentation, grab the requirements for it:
 
-#### sphinx-doc
+sphinx-doc:
+-----------
 https://www.sphinx-doc.org/en/master/
 
-#### Read The Docs Theme
+Read The Docs Theme:
+--------------------
 https://sphinx-rtd-theme.readthedocs.io/en/stable/
 
-## Licence
+##
+# Licence
+##
 
 This project is licenced under the ZLib licence. 
 Please read the included LICENCE.txt for the exact terms.
 
 
-## Directories
+##
+# Directories
+##
 
 This project supplies multiple directories for the development of said project. 
 Their names and descriptions are as follows:
 
-Directory | Description
---------- | -----------
-build | CMake build directory.
-doc | Documentation files.
-include | Library header files used by the library as well as the project headers.
-lib | Library files used by the project as well as the created build.
-src | Project source code.
+Directory List:
+build: CMake build directory.
+doc: Documentation files.
+include: Library header files used by the library as well as the project headers.
+lib: Library files used by the project as well as the created build.
+src: Project source code.
