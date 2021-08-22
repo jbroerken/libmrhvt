@@ -3,10 +3,11 @@ libmrhvt
 .. image:: banner.png
    :align: center
    
-libmrhvt is an open source library which includes multiple tools for working 
-with voice / string user input and output. It supports trigger files to match 
-user input to action, semi-random sentence building with sentence files, 
-conversation logging and more.
+The libmrhvt library implements the files and functions used for voice and text 
+based interactions. It provides the management for input triggers, output 
+generators and clean list files. Also included are string comparison and string 
+manipulation functions to build, manage and prepare input and output strings 
+based on events.
 
 This documentation includes listings for the internal functions, enumerations, 
 etc. used by the library itself. These are not meant to be used directly for 
