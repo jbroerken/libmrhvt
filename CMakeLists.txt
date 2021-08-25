@@ -31,7 +31,6 @@ project(libmrhvt VERSION 1.0
                  DESCRIPTION "Voice toolkit library for MRH platform applications"
                  LANGUAGES CXX)
 
-
 #########################################################################
 #
 #  PATHS
@@ -63,39 +62,39 @@ set(SRC_DIR_PATH "${CMAKE_SOURCE_DIR}/src/")
 set(INCLUDE_DIR_PATH "${CMAKE_SOURCE_DIR}/include/")
 
 set(SRC_LIST_INPUT "${SRC_DIR_PATH}/libmrhvt/Input/MRH_Trigger.cpp"
-			       "${SRC_DIR_PATH}/libmrhvt/Input/MRH_InputTrigger.cpp"
-			       "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/Input/MRH_Trigger.h"
-				   "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/Input/MRH_InputTrigger.h")
+                   "${SRC_DIR_PATH}/libmrhvt/Input/MRH_InputTrigger.cpp"
+                   "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/Input/MRH_Trigger.h"
+                   "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/Input/MRH_InputTrigger.h")
 					
 set(SRC_LIST_OUTPUT "${SRC_DIR_PATH}/libmrhvt/Output/MRH_Word.cpp"
-					"${SRC_DIR_PATH}/libmrhvt/Output/MRH_Placement.cpp"
-					"${SRC_DIR_PATH}/libmrhvt/Output/MRH_Sentence.cpp"
-					"${SRC_DIR_PATH}/libmrhvt/Output/MRH_OutputGenerator.cpp"
-					"${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/Output/MRH_Word.h"
-					"${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/Output/MRH_Placement.h"
-					"${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/Output/MRH_Sentence.h"
-					"${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/Output/MRH_OutputGenerator.h")
+                    "${SRC_DIR_PATH}/libmrhvt/Output/MRH_Placement.cpp"
+                    "${SRC_DIR_PATH}/libmrhvt/Output/MRH_Sentence.cpp"
+                    "${SRC_DIR_PATH}/libmrhvt/Output/MRH_OutputGenerator.cpp"
+                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/Output/MRH_Word.h"
+                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/Output/MRH_Placement.h"
+                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/Output/MRH_Sentence.h"
+                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/Output/MRH_OutputGenerator.h")
 					
 set(SRC_LIST_STRING "${SRC_DIR_PATH}/libmrhvt/String/Compare/MRH_DefaultCompare.cpp"
-					"${SRC_DIR_PATH}/libmrhvt/String/Compare/MRH_Levenshtein.cpp"
-					"${SRC_DIR_PATH}/libmrhvt/String/Clean/MRH_CleanSet.cpp"
-					"${SRC_DIR_PATH}/libmrhvt/String/MRH_Convert.cpp"
-					"${SRC_DIR_PATH}/libmrhvt/String/MRH_Clean.cpp"
-					"${SRC_DIR_PATH}/libmrhvt/String/MRH_LocalisedPath.cpp"
-					"${SRC_DIR_PATH}/libmrhvt/String/MRH_SpeechString.cpp"
-					"${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/Compare/MRH_DefaultCompare.h"
-					"${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/Compare/MRH_Levenshtein.h"
-					"${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/Clean/MRH_CleanSet.h"
-					"${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_Compare.h"
-					"${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_Convert.h"
-					"${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_Clean.h"
-					"${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_LocalisedPath.h"
-					"${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_SpeechString.h")
+                    "${SRC_DIR_PATH}/libmrhvt/String/Compare/MRH_Levenshtein.cpp"
+                    "${SRC_DIR_PATH}/libmrhvt/String/Clean/MRH_CleanSet.cpp"
+                    "${SRC_DIR_PATH}/libmrhvt/String/MRH_Convert.cpp"
+                    "${SRC_DIR_PATH}/libmrhvt/String/MRH_Clean.cpp"
+                    "${SRC_DIR_PATH}/libmrhvt/String/MRH_LocalisedPath.cpp"
+                    "${SRC_DIR_PATH}/libmrhvt/String/MRH_SpeechString.cpp"
+                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/Compare/MRH_DefaultCompare.h"
+                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/Compare/MRH_Levenshtein.h"
+                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/Clean/MRH_CleanSet.h"
+                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_Compare.h"
+                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_Convert.h"
+                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_Clean.h"
+                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_LocalisedPath.h"
+                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_SpeechString.h")
 					
 set(SRC_LIST_GLOBAL "${SRC_DIR_PATH}/libmrhvt/MRH_VTRevision.cpp"
-					"${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/MRH_VTException.h"
-					"${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/MRH_VTRevision.h"
-					"${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt.h")
+                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/MRH_VTException.h"
+                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/MRH_VTRevision.h"
+                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt.h")
 					
 ###
 #  Library Paths
@@ -109,7 +108,7 @@ set(LIB_DIR_PATH "${CMAKE_SOURCE_DIR}/lib/")
 
 set(LIB_BIN_LIST "${LIB_DIR_PATH}/libmrhbf.a")
 set(LIB_INCLUDE_LIST "${INCLUDE_DIR_PATH}/mrhshared"
-					 "${INCLUDE_DIR_PATH}/libmrhbf")
+                     "${INCLUDE_DIR_PATH}/libmrhbf")
 					 
 #########################################################################
 #
@@ -123,30 +122,30 @@ set(LIB_INCLUDE_LIST "${INCLUDE_DIR_PATH}/mrhshared"
 #  The target(s) to build.
 ###
 add_library(libmrhvt_Shared SHARED ${SRC_LIST_GLOBAL}
-								   ${SRC_LIST_STRING}
-								   ${SRC_LIST_OUTPUT}
-								   ${SRC_LIST_INPUT})
+                                   ${SRC_LIST_STRING}
+                                   ${SRC_LIST_OUTPUT}
+                                   ${SRC_LIST_INPUT})
 set_target_properties(libmrhvt_Shared
-    				  PROPERTIES
-					  PREFIX ""
-					  OUTPUT_NAME "libmrhvt"
-					  SUFFIX ".so"
-    				  ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-    				  LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-    				  RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR_PATH})
+                      PROPERTIES
+                      PREFIX ""
+                      OUTPUT_NAME "libmrhvt"
+                      SUFFIX ".so"
+                      ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
+                      LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
+                      RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR_PATH})
 					  
 add_library(libmrhvt_Static STATIC ${SRC_LIST_GLOBAL}
-								   ${SRC_LIST_STRING}
-								   ${SRC_LIST_OUTPUT}
-								   ${SRC_LIST_INPUT})
+                                   ${SRC_LIST_STRING}
+                                   ${SRC_LIST_OUTPUT}
+                                   ${SRC_LIST_INPUT})
 set_target_properties(libmrhvt_Static
-    				  PROPERTIES
-					  PREFIX ""
-					  OUTPUT_NAME "libmrhvt"
-					  SUFFIX ".a"
-    				  ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-    				  LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-    				  RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR_PATH})
+                      PROPERTIES
+                      PREFIX ""
+                      OUTPUT_NAME "libmrhvt"
+                      SUFFIX ".a"
+                      ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
+                      LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
+                      RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR_PATH})
 
 ###
 #  Required Libraries
