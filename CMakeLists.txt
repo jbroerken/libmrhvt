@@ -132,6 +132,7 @@ set_target_properties(libmrhvt_Shared
 #  Libraries and / or headers required by this library.
 ###
 find_library(libmrhbf NAMES mrhbf REQUIRED)
+
 target_link_libraries(libmrhvt_Shared PUBLIC mrhbf)
 
 ###
