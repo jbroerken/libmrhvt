@@ -27,9 +27,10 @@ set(CMAKE_CXX_STANDARD 14)
 #  ------------
 #  General simple information about our project.
 ###
-project(libmrhvt VERSION 1.0
+project(libmrhvt VERSION 1.0.0
                  DESCRIPTION "Voice toolkit library for MRH platform applications"
                  LANGUAGES CXX)
+set(LIB_SO_VERSION 1)
 
 #########################################################################
 #
@@ -38,12 +39,11 @@ project(libmrhvt VERSION 1.0
 #########################################################################
 
 ###
-#  Binary Paths
-#  ------------
-#  The paths for our created binary file(s).
+#  Install Paths
+#  -------------
+#  GNU system paths for installation.
 ###
-set(BIN_DIR_PATH "${CMAKE_SOURCE_DIR}/lib/")
-file(MAKE_DIRECTORY ${BIN_DIR_PATH})
+include(GNUInstallDirs)
 
 ###
 #  Build Paths
@@ -95,20 +95,13 @@ set(SRC_LIST_GLOBAL "${SRC_DIR_PATH}/libmrhvt/MRH_VTRevision.cpp"
                     "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/MRH_VTException.h"
                     "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/MRH_VTRevision.h"
                     "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt.h")
-					
-###
-#  Library Paths
-#  -------------
-#  The paths to the external libraries to use. 
-#  Both the binary and include paths should be set here.
-#  Add OS specific libraries in their own lists.
-###
-set(LIB_DIR_PATH "${CMAKE_SOURCE_DIR}/lib/")
-# Include dir path is defined with the sources!
 
-set(LIB_BIN_LIST "${LIB_DIR_PATH}/libmrhbf.a")
-set(LIB_INCLUDE_LIST "${INCLUDE_DIR_PATH}/mrhshared"
-                     "${INCLUDE_DIR_PATH}/libmrhbf")
+###
+#  Public API Path
+#  ---------------
+#  The path to the public api include folder.
+###
+set(PUBLIC_API_DIR_PATH "${INCLUDE_DIR_PATH}/libmrhvt")
 					 
 #########################################################################
 #
@@ -127,32 +120,28 @@ add_library(libmrhvt_Shared SHARED ${SRC_LIST_GLOBAL}
                                    ${SRC_LIST_INPUT})
 set_target_properties(libmrhvt_Shared
                       PROPERTIES
-                      PREFIX ""
-                      OUTPUT_NAME "libmrhvt"
+                      PREFIX "lib"
+                      OUTPUT_NAME "mrhvt"
                       SUFFIX ".so"
-                      ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-                      LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-                      RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR_PATH})
-					  
-add_library(libmrhvt_Static STATIC ${SRC_LIST_GLOBAL}
-                                   ${SRC_LIST_STRING}
-                                   ${SRC_LIST_OUTPUT}
-                                   ${SRC_LIST_INPUT})
-set_target_properties(libmrhvt_Static
-                      PROPERTIES
-                      PREFIX ""
-                      OUTPUT_NAME "libmrhvt"
-                      SUFFIX ".a"
-                      ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-                      LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR_PATH}
-                      RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR_PATH})
+                      VERSION ${PROJECT_VERSION}
+                      SOVERSION ${LIB_SO_VERSION})
 
 ###
 #  Required Libraries
 #  ------------------
 #  Libraries and / or headers required by this library.
 ###
-target_link_libraries(libmrhvt_Shared PUBLIC ${LIB_BIN_LIST})
-target_link_libraries(libmrhvt_Static PUBLIC ${LIB_BIN_LIST})
+find_library(libmrhbf NAMES mrhbf REQUIRED)
+target_link_libraries(libmrhvt_Shared PUBLIC mrhbf)
 
-include_directories(${LIB_INCLUDE_LIST})
+###
+#  Install
+#  -------
+#  Library installation.
+###
+install(TARGETS libmrhvt_Shared
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(DIRECTORY "${PUBLIC_API_DIR_PATH}/"
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        FILES_MATCHING
+        PATTERN "*.h")
