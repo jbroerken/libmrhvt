@@ -25,8 +25,6 @@ Functions
       - Visibility
     * - :doc:`../../../Functions/libmrhvt_Directory/String/MRH_LocalisedPath/GetPath`
       - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/String/MRH_LocalisedPath/GetPathDefault`
-      - Public
 
       
 Variables

@@ -79,21 +79,9 @@ Library Functions
   libmrhvt_Directory/String/Compare/MRH_Levenshtein/MRH_StringCompareLS/GetSimilarity
   libmrhvt_Directory/String/Compare/MRH_Levenshtein/MRH_StringCompareLS/IsSimilar
   libmrhvt_Directory/String/Compare/MRH_Levenshtein/MRH_StringCompareLS/ContainedIn
-  libmrhvt_Directory/String/Clean/MRH_CleanSet/MRH_CleanSet_0
-  libmrhvt_Directory/String/Clean/MRH_CleanSet/MRH_CleanSet_1
-  libmrhvt_Directory/String/Clean/MRH_CleanSet/~MRH_CleanSet
-  libmrhvt_Directory/String/Clean/MRH_CleanSet/Add
-  libmrhvt_Directory/String/Clean/MRH_CleanSet/Remove_0
-  libmrhvt_Directory/String/Clean/MRH_CleanSet/Remove_1
-  libmrhvt_Directory/String/Clean/MRH_CleanSet/GetStringCount
-  libmrhvt_Directory/String/Clean/MRH_CleanSet/GetString
-  libmrhvt_Directory/String/Clean/MRH_CleanSet/GetStringExists
-  libmrhvt_Directory/String/Clean/MRH_CleanSet/SetString
-  libmrhvt_Directory/String/MRH_StringClean/Clean
   libmrhvt_Directory/String/MRH_StringConvert/ToLower
   libmrhvt_Directory/String/MRH_StringConvert/ToUpper
   libmrhvt_Directory/String/MRH_LocalisedPath/GetPath
-  libmrhvt_Directory/String/MRH_LocalisedPath/GetPathDefault
   libmrhvt_Directory/String/MRH_SpeechString/MRH_SpeechString_0
   libmrhvt_Directory/String/MRH_SpeechString/MRH_SpeechString_1
   libmrhvt_Directory/String/MRH_SpeechString/~MRH_SpeechString
@@ -124,8 +112,5 @@ Internal Functions
   _Internal/libmrhvt_Directory/Output/MRH_OutputGenerator/SelectElement
   _Internal/libmrhvt_Directory/Output/MRH_OutputGenerator/RandomSentence
   _Internal/libmrhvt_Directory/Output/MRH_OutputGenerator/RandomWord
-  _Internal/libmrhvt_Directory/Log/Input/Input_0
-  _Internal/libmrhvt_Directory/Log/Output/Output_0
-  _Internal/libmrhvt_Directory/String/Clean/MRH_CleanSet/SetupFile
   
   

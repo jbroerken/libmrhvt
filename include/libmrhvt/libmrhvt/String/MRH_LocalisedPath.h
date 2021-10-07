@@ -40,21 +40,14 @@ namespace MRH_LocalisedPath
     
     /**
      *  Get a localised path. The locale directory name is chosen with the system locale.
+     *  The path will include the "Default" directory in the path if the directory for
+     *  the locale not exists.
      *
-     *  \param s_DirPath The path to the directory containing localised directories.
-     *  \param s_FileName The file to point to.
+     *  \param s_ToPath The path to the directory containing localised directories.
+     *  \param s_FromPath The path inside the locale directory to append.
      */
     
-    std::string GetPath(std::string s_DirPath, std::string const& s_FileName) noexcept;
-
-    /**
-     *  Get a localised path for the default locale directory.
-     *
-     *  \param s_DirPath The path to the directory containing localised directories.
-     *  \param s_FileName The file to point to.
-     */
-
-    std::string GetPathDefault(std::string s_DirPath, std::string const& s_FileName) noexcept;
+    std::string GetPath(std::string s_ToPath, std::string const& s_FromPath) noexcept;
 }
 
 #endif /* MRH_LocalisedPath_h */

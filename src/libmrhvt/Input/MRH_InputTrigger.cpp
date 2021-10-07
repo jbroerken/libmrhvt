@@ -102,16 +102,9 @@ MRH_InputTrigger::MRH_InputTrigger(std::string s_DirPath,
     {
         SetupFile(MRH_LocalisedPath::GetPath(s_DirPath, s_FileName));
     }
-    catch (...)
+    catch (MRH_VTException& e)
     {
-        try
-        {
-            SetupFile(MRH_LocalisedPath::GetPathDefault(s_DirPath, s_FileName));
-        }
-        catch (MRH_VTException& e)
-        {
-            throw;
-        }
+        throw;
     }
 }
 

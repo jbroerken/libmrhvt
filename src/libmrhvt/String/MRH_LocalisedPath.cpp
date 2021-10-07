@@ -22,6 +22,7 @@
  */
 
 // C / C++
+#include <sys/stat.h>
 #include <clocale>
 #include <cstring>
 
@@ -40,29 +41,43 @@
 // Getters
 //*************************************************************************************
 
-std::string MRH_LocalisedPath::GetPath(std::string s_DirPath, std::string const& s_FileName) noexcept
+std::string MRH_LocalisedPath::GetPath(std::string s_ToPath, std::string const& s_FromPath) noexcept
 {
-    std::string s_Locale = "Default";
+    // Check dir for end
+    if (s_ToPath.length() > 0 && *(s_ToPath.end() - 1) != '/')
+    {
+        s_ToPath += "/";
+    }
+    
+    // Grab the locale
     char* p_Locale;
-    if ((p_Locale = std::setlocale(LC_CTYPE, NULL)) != NULL && std::strlen(p_Locale) > 5)
+    
+    if ((p_Locale = std::setlocale(LC_ALL, NULL)) == NULL)
     {
-        s_Locale = std::string(std::setlocale(LC_CTYPE, NULL), 5);
+        // Not set, return default
+        return s_ToPath + MRH_LOCALE_DIRECTORY_DEFAULT + "/" + s_FromPath;
     }
     
-    if (s_DirPath.length() > 0 && *(s_DirPath.end() - 1) != '/')
+    std::string s_Locale(p_Locale);
+    
+    // Does the locale have something like .UTF-8 attached?
+    size_t us_AddPos;
+    
+    if ((us_AddPos = s_Locale.find('.')) != std::string::npos)
     {
-        s_DirPath += "/";
+        s_Locale = s_Locale.substr(0, us_AddPos);
     }
     
-    return s_DirPath + s_Locale + "/" + s_FileName;
-}
-
-std::string MRH_LocalisedPath::GetPathDefault(std::string s_DirPath, std::string const& s_FileName) noexcept
-{
-    if (s_DirPath.length() > 0 && *(s_DirPath.end() - 1) != '/')
+    // Check for directory existence
+    std::string s_LocaleDir = s_ToPath + s_Locale;
+    struct stat c_Stat;
+    
+    if (stat(s_LocaleDir.c_str(), &c_Stat) == 0 && S_ISDIR(c_Stat.st_mode))
     {
-        s_DirPath += "/";
+        // Exists, return locale path
+        return s_LocaleDir + "/" + s_FromPath;
     }
     
-    return s_DirPath + MRH_LOCALE_DIRECTORY_DEFAULT + "/" + s_FileName;
+    // Doesn't exist, return default
+    return s_ToPath + MRH_LOCALE_DIRECTORY_DEFAULT + "/" + s_FromPath;
 }

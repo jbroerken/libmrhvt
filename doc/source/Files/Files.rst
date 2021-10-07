@@ -12,4 +12,3 @@ File Formats
 
   InputTriggerFile/InputTriggerFile
   OutputGeneratorFile/OutputGeneratorFile
-  CleanSetFile/CleanSetFile

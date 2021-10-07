@@ -24,7 +24,6 @@ libmrhvt source.
    Building/Building
    Files/Files
    Classes/Classes
-   Structs/Structs
    Namespaces/Namespaces
    Enumerations/Enumerations
    Macros/Macros

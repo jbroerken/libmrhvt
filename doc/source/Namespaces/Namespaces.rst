@@ -16,7 +16,6 @@ Library Namespaces
   libmrhvt_Directory/String/Compare/MRH_StringCompareDC
   libmrhvt_Directory/String/Compare/MRH_StringCompareLS
   libmrhvt_Directory/String/MRH_StringConvert
-  libmrhvt_Directory/String/MRH_StringClean
   libmrhvt_Directory/String/MRH_LocalisedPath
 
 Internal Namespaces

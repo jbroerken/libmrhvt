@@ -77,17 +77,13 @@ set(SRC_LIST_OUTPUT "${SRC_DIR_PATH}/libmrhvt/Output/MRH_Word.cpp"
 					
 set(SRC_LIST_STRING "${SRC_DIR_PATH}/libmrhvt/String/Compare/MRH_DefaultCompare.cpp"
                     "${SRC_DIR_PATH}/libmrhvt/String/Compare/MRH_Levenshtein.cpp"
-                    "${SRC_DIR_PATH}/libmrhvt/String/Clean/MRH_CleanSet.cpp"
                     "${SRC_DIR_PATH}/libmrhvt/String/MRH_Convert.cpp"
-                    "${SRC_DIR_PATH}/libmrhvt/String/MRH_Clean.cpp"
                     "${SRC_DIR_PATH}/libmrhvt/String/MRH_LocalisedPath.cpp"
                     "${SRC_DIR_PATH}/libmrhvt/String/MRH_SpeechString.cpp"
                     "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/Compare/MRH_DefaultCompare.h"
                     "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/Compare/MRH_Levenshtein.h"
-                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/Clean/MRH_CleanSet.h"
                     "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_Compare.h"
                     "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_Convert.h"
-                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_Clean.h"
                     "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_LocalisedPath.h"
                     "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_SpeechString.h")
 					
