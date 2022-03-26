@@ -1,7 +1,6 @@
-~MRH_SpeechString
-=================
-The ~MRH_SpeechString function is the default destructor for the 
-MRH_SpeechString class.
+ClearSentences
+==============
+The ClearSentences function is used to remove all sentences.
 
 Header
 ------
@@ -9,14 +8,14 @@ The function definition can be found in the following file:
 
 .. code-block:: c
 
-    #include <libmrhvt/String/MRH_SpeechString.h>
+    #include <libmrhvt/Output/MRH_OutputGenerator.h>
 
 
 Syntax
 ------
 .. code-block:: c
 
-    ~MRH_SpeechString() noexcept;
+    void ClearSentences() noexcept;
 
 
 Parameters

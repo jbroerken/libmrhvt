@@ -79,18 +79,16 @@ set(SRC_LIST_STRING "${SRC_DIR_PATH}/libmrhvt/String/Compare/MRH_DefaultCompare.
                     "${SRC_DIR_PATH}/libmrhvt/String/Compare/MRH_Levenshtein.cpp"
                     "${SRC_DIR_PATH}/libmrhvt/String/MRH_Convert.cpp"
                     "${SRC_DIR_PATH}/libmrhvt/String/MRH_LocalisedPath.cpp"
-                    "${SRC_DIR_PATH}/libmrhvt/String/MRH_SpeechString.cpp"
                     "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/Compare/MRH_DefaultCompare.h"
                     "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/Compare/MRH_Levenshtein.h"
                     "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_Compare.h"
                     "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_Convert.h"
-                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_LocalisedPath.h"
-                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_SpeechString.h")
+                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/String/MRH_LocalisedPath.h")
 					
-set(SRC_LIST_GLOBAL "${SRC_DIR_PATH}/libmrhvt/MRH_VTRevision.cpp"
-                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/MRH_VTException.h"
-                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/MRH_VTRevision.h"
-                    "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt.h")
+set(SRC_LIST_BASE "${SRC_DIR_PATH}/libmrhvt/MRH_VTRevision.cpp"
+                  "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/MRH_VTException.h"
+                  "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt/MRH_VTRevision.h"
+                  "${INCLUDE_DIR_PATH}/libmrhvt/libmrhvt.h")
 
 ###
 #  Public API Path
@@ -110,7 +108,7 @@ set(PUBLIC_API_DIR_PATH "${INCLUDE_DIR_PATH}/libmrhvt")
 #  ------
 #  The target(s) to build.
 ###
-add_library(libmrhvt_Shared SHARED ${SRC_LIST_GLOBAL}
+add_library(libmrhvt_Shared SHARED ${SRC_LIST_BASE}
                                    ${SRC_LIST_STRING}
                                    ${SRC_LIST_OUTPUT}
                                    ${SRC_LIST_INPUT})

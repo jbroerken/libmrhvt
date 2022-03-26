@@ -1,6 +1,6 @@
-GetID (Speech String)
-=====================
-The GetID function is used to retrieve the string id of the speech string.
+ClearPlacements
+===============
+The ClearPlacements function is used to remove all placements.
 
 Header
 ------
@@ -8,14 +8,14 @@ The function definition can be found in the following file:
 
 .. code-block:: c
 
-    #include <libmrhvt/String/MRH_SpeechString.h>
+    #include <libmrhvt/Output/MRH_OutputGenerator.h>
 
 
 Syntax
 ------
 .. code-block:: c
 
-    MRH_Uint32 GetID() const noexcept;
+    void ClearPlacements() noexcept;
 
 
 Parameters
@@ -24,7 +24,7 @@ None.
 
 Return Value
 ------------
-The speech string string id.
+None.
 
 Remarks
 -------

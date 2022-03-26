@@ -28,10 +28,6 @@ Functions
       - Public
     * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_Word/GetUseChance`
       - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_Word/SetString`
-      - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_Word/SetUseChance`
-      - Public
 
 
 Enumerations

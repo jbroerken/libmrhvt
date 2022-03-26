@@ -1,7 +1,7 @@
-GetSentenceCount
-================
-The GetSentenceCount function is used to get the amount of base 
-sentences available.
+GetTriggers
+===========
+The GetTriggers function is used to return the currently stored 
+triggers.
 
 Header
 ------
@@ -9,14 +9,14 @@ The function definition can be found in the following file:
 
 .. code-block:: c
 
-    #include <libmrhvt/Output/MRH_OutputGenerator.h>
+    #include <libmrhvt/Input/MRH_InputTrigger.h>
 
 
 Syntax
 ------
 .. code-block:: c
 
-    size_t GetSentenceCount() const noexcept;
+    std::deque<MRH_Trigger> const& GetTriggers() const noexcept;
 
 
 Parameters
@@ -25,7 +25,7 @@ None.
 
 Return Value
 ------------
-The base sentence count.
+The currently stored triggers.
 
 Remarks
 -------

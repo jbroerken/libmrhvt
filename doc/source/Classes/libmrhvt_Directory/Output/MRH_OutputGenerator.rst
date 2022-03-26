@@ -33,32 +33,18 @@ Functions
       - Public
     * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/AddSentence`
       - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/RemoveWord`
+    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/ClearWords`
       - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/RemovePlacement`
+    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/ClearPlacements`
       - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/RemoveSentence`
+    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/ClearSentences`
       - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/GetSentenceCount`
+    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/GetSentences`
       - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/GetPlacementCount`
+    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/GetPlacements`
       - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/GetWordCount`
+    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/GetWords`
       - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/GetSentence_0`
-      - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/GetSentence_1`
-      - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/GetPlacement_0`
-      - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/GetPlacement_1`
-      - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/GetWord_0`
-      - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_OutputGenerator/GetWord_1`
-      - Public
-    * - :doc:`../../../Functions/_Internal/libmrhvt_Directory/Output/MRH_OutputGenerator/SetupFile`
-      - Private
     * - :doc:`../../../Functions/_Internal/libmrhvt_Directory/Output/MRH_OutputGenerator/SelectElement`
       - Private
     * - :doc:`../../../Functions/_Internal/libmrhvt_Directory/Output/MRH_OutputGenerator/RandomSentence`

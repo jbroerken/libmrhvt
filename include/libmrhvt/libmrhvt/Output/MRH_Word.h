@@ -89,26 +89,6 @@ public:
     MRH_Sfloat64 GetUseChance() const noexcept;
     
     //*************************************************************************************
-    // Setters
-    //*************************************************************************************
-    
-    /**
-     *  Set the word string.
-     *
-     *  \param s_String The new UTF-8 string.
-     */
-    
-    void SetString(std::string const& s_String);
-    
-    /**
-     *  Set the word use chance.
-     *
-     *  \param f64_UseChance The word use chance.
-     */
-    
-    void SetUseChance(MRH_Sfloat64 f64_UseChance) noexcept;
-    
-    //*************************************************************************************
     // Data
     //*************************************************************************************
     

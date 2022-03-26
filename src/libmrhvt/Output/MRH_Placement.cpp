@@ -59,22 +59,3 @@ MRH_Uint32 MRH_Placement::GetGroupID() const noexcept
 {
     return u32_GroupID;
 }
- 
-//*************************************************************************************
-// Setters
-//*************************************************************************************
- 
-void MRH_Placement::SetString(std::string const& s_String)
-{
-    if (s_String.length() == 0)
-    {
-        throw MRH_VTException("Invalid string given!");
-    }
-    
-    this->s_String = s_String;
-}
- 
-void MRH_Placement::SetGroupID(MRH_Uint32 u32_GroupID) noexcept
-{
-    this->u32_GroupID = u32_GroupID;
-}

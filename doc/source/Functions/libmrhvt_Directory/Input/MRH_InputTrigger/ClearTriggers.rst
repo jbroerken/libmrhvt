@@ -1,7 +1,6 @@
-GetTriggerCount
-===============
-The GetTriggerCount function is used to get the amount of triggers 
-available.
+ClearTriggers
+=============
+The ClearTriggers function is used to remove all current triggers.
 
 Header
 ------
@@ -16,16 +15,16 @@ Syntax
 ------
 .. code-block:: c
 
-    size_t GetTriggerCount() const noexcept;
+    void ClearTriggers() noexcpet;
 
 
 Parameters
 ----------
-None.
+None. 
 
 Return Value
 ------------
-The trigger count.
+None.
 
 Remarks
 -------

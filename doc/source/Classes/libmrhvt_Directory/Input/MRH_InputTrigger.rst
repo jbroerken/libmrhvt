@@ -29,24 +29,14 @@ Functions
       - Public
     * - :doc:`../../../Functions/libmrhvt_Directory/Input/MRH_InputTrigger/AddTrigger`
       - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Input/MRH_InputTrigger/RemoveTrigger`
+    * - :doc:`../../../Functions/libmrhvt_Directory/Input/MRH_InputTrigger/ClearTriggers`
       - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Input/MRH_InputTrigger/GetTriggerCount`
-      - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Input/MRH_InputTrigger/GetTrigger_0`
-      - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Input/MRH_InputTrigger/GetTrigger_1`
+    * - :doc:`../../../Functions/libmrhvt_Directory/Input/MRH_InputTrigger/GetTriggers`
       - Public
     * - :doc:`../../../Functions/libmrhvt_Directory/Input/MRH_InputTrigger/GetCompareMethod`
       - Public
     * - :doc:`../../../Functions/libmrhvt_Directory/Input/MRH_InputTrigger/GetLSSimilarity`
       - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Input/MRH_InputTrigger/SetCompareMethod`
-      - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Input/MRH_InputTrigger/SetLSSimilarity`
-      - Public
-    * - :doc:`../../../Functions/_Internal/libmrhvt_Directory/Input/MRH_InputTrigger/SetupFile`
-      - Private
     * - :doc:`../../../Functions/_Internal/libmrhvt_Directory/Input/MRH_InputTrigger/SearchTrigger`
       - Private
 

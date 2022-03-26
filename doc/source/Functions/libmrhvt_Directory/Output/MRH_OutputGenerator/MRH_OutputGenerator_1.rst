@@ -1,8 +1,8 @@
-MRH_OutputGenerator (Locale Constructor)
-========================================
-The locale based MRH_OutputGenerator constructor function is used to construct the 
-MRH_OutputGenerator class by creating a locale path from a given directory path and 
-file name.
+MRH_OutputGenerator (File Constructor)
+======================================
+The MRH_OutputGenerator file constructor function is used to construct 
+and populate a MRH_OutputGenerator object by reading a file from a given 
+path.
 
 Header
 ------
@@ -17,8 +17,7 @@ Syntax
 ------
 .. code-block:: c
 
-    MRH_OutputGenerator(std::string s_DirPath,
-                        std::string const& s_FileName);
+    MRH_OutputGenerator(std::string const& s_FilePath);
 
 
 Parameters
@@ -28,10 +27,8 @@ Parameters
 
     * - Parameter
       - Description
-    * - s_DirPath
-      - The full path to the output generator directory.
-    * - s_FileName
-      - The name of the output generator file.
+    * - s_FilePath
+      - The full path to the output generator file.
 
 
 Return Value
@@ -40,7 +37,7 @@ None.
 
 Remarks
 -------
-* The locale directory appended to the file path is retrieved by std::setlocale.
+None.
 
 Code Examples
 -------------

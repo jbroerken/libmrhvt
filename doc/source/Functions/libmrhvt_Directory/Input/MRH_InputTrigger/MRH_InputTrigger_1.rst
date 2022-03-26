@@ -1,8 +1,7 @@
-MRH_InputTrigger (Locale Constructor)
-=====================================
-The locale based MRH_InputTrigger constructor function is used to construct the 
-MRH_InputTrigger class by creating a locale path from a given directory path and 
-file name.
+MRH_InputTrigger (File Constructor)
+===================================
+The MRH_InputTrigger file constructor function is used to construct and 
+populate a MRH_InputTrigger object by reading a file from a given path.
 
 Header
 ------
@@ -17,8 +16,7 @@ Syntax
 ------
 .. code-block:: c
 
-    MRH_InputTrigger(std::string s_DirPath,
-                     std::string const& s_FileName);
+    MRH_InputTrigger(std::string const& s_FilePath);
 
 
 Parameters
@@ -28,10 +26,8 @@ Parameters
 
     * - Parameter
       - Description
-    * - s_DirPath
-      - The full path to the input trigger directory.
-    * - s_FileName
-      - The name of the input trigger file.
+    * - s_FilePath
+      - The full path to the input trigger file.
 
 
 Return Value
@@ -40,7 +36,7 @@ None.
 
 Remarks
 -------
-* The locale directory appended to the file path is retrieved by std::setlocale.
+None.
 
 Code Examples
 -------------

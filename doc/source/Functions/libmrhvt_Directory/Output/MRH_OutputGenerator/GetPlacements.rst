@@ -1,7 +1,6 @@
-GetPlacementCount
-=================
-The GetPlacementCount function is used to get the amount of 
-placements available.
+GetPlacements
+=============
+The GetPlacements function is used to get all generator placements.
 
 Header
 ------
@@ -16,7 +15,7 @@ Syntax
 ------
 .. code-block:: c
 
-    size_t GetPlacementCount() const noexcept;
+    std::deque<MRH_Placement> const& GetPlacements() const noexcept;
 
 
 Parameters
@@ -25,7 +24,7 @@ None.
 
 Return Value
 ------------
-The placement count.
+The generator placements.
 
 Remarks
 -------

@@ -18,7 +18,6 @@ Library Classes
   libmrhvt_Directory/Output/MRH_Sentence
   libmrhvt_Directory/Output/MRH_Placement
   libmrhvt_Directory/Output/MRH_OutputGenerator
-  libmrhvt_Directory/String/MRH_SpeechString
   libmrhvt_Directory/MRH_VTException
 
 Internal Classes

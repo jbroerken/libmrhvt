@@ -36,7 +36,6 @@
 #include "./libmrhvt/String/MRH_Compare.h"
 #include "./libmrhvt/String/MRH_Convert.h"
 #include "./libmrhvt/String/MRH_LocalisedPath.h"
-#include "./libmrhvt/String/MRH_SpeechString.h"
 
 
 #endif /* libmrhvt_h */

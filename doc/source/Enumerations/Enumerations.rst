@@ -15,7 +15,6 @@ Library Enumerations
   :maxdepth: 1
 
   libmrhvt_Directory/Input/MRH_InputTrigger/TriggerCompareMethod
-  libmrhvt_Directory/String/MRH_SpeechString/State
 
 Internal Enumerations
 ---------------------

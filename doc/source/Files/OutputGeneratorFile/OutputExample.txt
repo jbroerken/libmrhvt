@@ -28,8 +28,8 @@
 ##################
 
 <Word>{
-    <String><How are you doing>
-    <Chance><0.8>
+    <String><Hey>
+    <Chance><0.6>
     <WordGroup><0>
 }
 
@@ -44,7 +44,7 @@
 ##################
 
 <Word>{
-    <String><World>
+    <String><how are you doing>
     <Chance><1.0>
     <WordGroup><1>
 }

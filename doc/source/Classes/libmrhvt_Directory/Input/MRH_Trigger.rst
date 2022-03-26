@@ -31,12 +31,6 @@ Functions
       - Public
     * - :doc:`../../../Functions/libmrhvt_Directory/Input/MRH_Trigger/GetValue`
       - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Input/MRH_Trigger/SetString`
-      - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Input/MRH_Trigger/SetWeight`
-      - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Input/MRH_Trigger/SetValue`
-      - Public
 
 
 Enumerations

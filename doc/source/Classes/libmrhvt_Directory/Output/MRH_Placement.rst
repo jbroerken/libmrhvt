@@ -27,10 +27,6 @@ Functions
       - Public
     * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_Placement/GetGroupID`
       - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_Placement/SetString`
-      - Public
-    * - :doc:`../../../Functions/libmrhvt_Directory/Output/MRH_Placement/SetGroupID`
-      - Public
 
 
 Enumerations

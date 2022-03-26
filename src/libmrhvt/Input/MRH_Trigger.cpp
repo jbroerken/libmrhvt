@@ -35,7 +35,7 @@
 //*************************************************************************************
 
 const MRH_Uint32 MRH_Trigger::u32_WeightMin = 0;
-const MRH_Uint32 MRH_Trigger::u32_WeightMax = 1000;
+const MRH_Uint32 MRH_Trigger::u32_WeightMax = 10000;
 const MRH_Sint32 MRH_Trigger::s32_ValueInvalid = -1;
 
 MRH_Trigger::MRH_Trigger(std::string const& s_String,
@@ -48,8 +48,16 @@ MRH_Trigger::MRH_Trigger(std::string const& s_String,
     }
     
     MRH_StringConvert::ToLower(this->s_String);
-    SetWeight(u32_Weight);
-    SetValue(s32_Value);
+    
+    if ((this->u32_Weight = u32_Weight) > u32_WeightMax)
+    {
+        this->u32_Weight = u32_WeightMax;
+    }
+    
+    if ((this->s32_Value = s32_Value) <= s32_ValueInvalid)
+    {
+        this->s32_Value = 0;
+    }
 }
 
 MRH_Trigger::MRH_Trigger(MRH_Trigger const& c_Trigger) noexcept : s_String(c_Trigger.s_String),
@@ -77,34 +85,4 @@ MRH_Uint32 MRH_Trigger::GetWeight() const noexcept
 MRH_Sint32 MRH_Trigger::GetValue() const noexcept
 {
     return s32_Value;
-}
-
-//*************************************************************************************
-// Setters
-//*************************************************************************************
-
-void MRH_Trigger::SetString(std::string const& s_String)
-{
-    if (s_String.length() == 0)
-    {
-        throw MRH_VTException("Invalid string length!");
-    }
-    
-    MRH_StringConvert::ToLower((this->s_String = s_String));
-}
-
-void MRH_Trigger::SetWeight(MRH_Uint32 u32_Weight) noexcept
-{
-    if ((this->u32_Weight = u32_Weight) > u32_WeightMax)
-    {
-        this->u32_Weight = u32_WeightMax;
-    }
-}
-
-void MRH_Trigger::SetValue(MRH_Sint32 s32_Value) noexcept
-{
-    if ((this->s32_Value = s32_Value) <= s32_ValueInvalid)
-    {
-        this->s32_Value = 0;
-    }
 }

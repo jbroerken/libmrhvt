@@ -1,6 +1,7 @@
-RemoveSentence
-==============
-The RemoveSentence function is used to remove a known sentence.
+GetWords
+========
+The GetWords function is used to get all generator words for a 
+word group.
 
 Header
 ------
@@ -15,7 +16,7 @@ Syntax
 ------
 .. code-block:: c
 
-    void RemoveSentence(size_t us_Sentence);
+    std::deque<MRH_Word> const& GetWords(MRH_Uint32 u32_WordGroup) const;
 
 
 Parameters
@@ -25,18 +26,17 @@ Parameters
 
     * - Parameter
       - Description
-    * - us_Sentence
-      - The index of the sentence to remove.
+    * - u32_WordGroup
+      - The word group id of the words.
       
 
 Return Value
 ------------
-None.
+The requested words of the word group.
 
 Remarks
 -------
-* Make sure to not remove the sentence if a reference is 
-  still active.
+None.
 
 Code Examples
 -------------

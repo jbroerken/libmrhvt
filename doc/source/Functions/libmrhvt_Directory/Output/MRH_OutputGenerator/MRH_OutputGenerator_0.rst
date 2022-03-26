@@ -1,7 +1,7 @@
 MRH_OutputGenerator (Default Constructor)
 =========================================
-The default MRH_OutputGenerator constructor function is used to construct the 
-MRH_OutputGenerator class by reading a file from a given path.
+The default MRH_OutputGenerator constructor function is used to construct a 
+MRH_OutputGenerator object with given output information.
 
 Header
 ------
@@ -16,7 +16,9 @@ Syntax
 ------
 .. code-block:: c
 
-    MRH_OutputGenerator(std::string const& s_FilePath);
+    MRH_OutputGenerator(std::deque<MRH_Sentence>& dq_Sentence,
+                        std::deque<MRH_Placement>& dq_Placement,
+                        std::unordered_map<MRH_Uint32, std::deque<MRH_Word>>& m_Word);
 
 
 Parameters
@@ -26,8 +28,12 @@ Parameters
 
     * - Parameter
       - Description
-    * - s_FilePath
-      - The full path to the output generator file.
+    * - dq_Sentence
+      - The sentences for the generator. The deque is consumed.
+    * - dq_Placement
+      - The placements for the generator. The deque is consumed.
+    * - m_Word
+      - The words for the generator. The words are consumed.
 
 
 Return Value

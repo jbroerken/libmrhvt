@@ -1,7 +1,7 @@
-Reset (Empty All)
-=================
-The empty all Reset function is used to remove all parts and set the 
-new string id.
+ClearWords
+==========
+The ClearWords function is used to remove all words for a 
+word group.
 
 Header
 ------
@@ -9,14 +9,14 @@ The function definition can be found in the following file:
 
 .. code-block:: c
 
-    #include <libmrhvt/String/MRH_SpeechString.h>
+    #include <libmrhvt/Output/MRH_OutputGenerator.h>
 
 
 Syntax
 ------
 .. code-block:: c
 
-    void Reset(MRH_Uint32 u32_ID) noexcept;
+    void ClearWords(MRH_Uint32 u32_WordGroup) noexcept;
 
 
 Parameters
@@ -26,9 +26,9 @@ Parameters
 
     * - Parameter
       - Description
-    * - u32_ID
-      - The new string id of the speech string.
-
+    * - u32_WordGroup
+      - The word group to clear.
+      
 
 Return Value
 ------------

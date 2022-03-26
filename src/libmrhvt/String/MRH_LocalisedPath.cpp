@@ -23,6 +23,7 @@
 
 // C / C++
 #include <sys/stat.h>
+#include <unistd.h>
 #include <clocale>
 #include <cstring>
 
@@ -32,8 +33,8 @@
 #include "../../../include/libmrhvt/libmrhvt/String/MRH_LocalisedPath.h"
 
 // Pre-defined
-#ifndef MRH_LOCALE_DIRECTORY_DEFAULT
-    #define MRH_LOCALE_DIRECTORY_DEFAULT "Default"
+#ifndef MRH_LOCALE_IDENTIFIER_DEFAULT
+    #define MRH_LOCALE_IDENTIFIER_DEFAULT "Default"
 #endif
 
 
@@ -41,21 +42,15 @@
 // Getters
 //*************************************************************************************
 
-std::string MRH_LocalisedPath::GetPath(std::string s_ToPath, std::string const& s_FromPath) noexcept
+static inline std::string GetLocaleName() noexcept
 {
-    // Check dir for end
-    if (s_ToPath.length() > 0 && *(s_ToPath.end() - 1) != '/')
-    {
-        s_ToPath += "/";
-    }
-    
     // Grab the locale
     char* p_Locale;
     
     if ((p_Locale = std::setlocale(LC_ALL, NULL)) == NULL)
     {
         // Not set, return default
-        return s_ToPath + MRH_LOCALE_DIRECTORY_DEFAULT + "/" + s_FromPath;
+        return MRH_LOCALE_IDENTIFIER_DEFAULT;
     }
     
     std::string s_Locale(p_Locale);
@@ -68,6 +63,21 @@ std::string MRH_LocalisedPath::GetPath(std::string s_ToPath, std::string const& 
         s_Locale = s_Locale.substr(0, us_AddPos);
     }
     
+    // Finished name without attachments
+    return s_Locale;
+}
+
+std::string MRH_LocalisedPath::GetPath(std::string s_ToPath, std::string const& s_FromPath) noexcept
+{
+    // Check dir for end
+    if (s_ToPath.length() > 0 && *(s_ToPath.end() - 1) != '/')
+    {
+        s_ToPath += "/";
+    }
+    
+    // Grab the locale
+    std::string s_Locale = GetLocaleName();
+    
     // Check for directory existence
     std::string s_LocaleDir = s_ToPath + s_Locale;
     struct stat c_Stat;
@@ -79,5 +89,28 @@ std::string MRH_LocalisedPath::GetPath(std::string s_ToPath, std::string const& 
     }
     
     // Doesn't exist, return default
-    return s_ToPath + MRH_LOCALE_DIRECTORY_DEFAULT + "/" + s_FromPath;
+    return s_ToPath + MRH_LOCALE_IDENTIFIER_DEFAULT + "/" + s_FromPath;
+}
+
+std::string MRH_LocalisedPath::GetFile(std::string s_DirPath, std::string const& s_FileExtension) noexcept
+{
+    // Check dir path for end
+    if (s_DirPath.length() > 0 && *(s_DirPath.end() - 1) != '/')
+    {
+        s_DirPath += "/";
+    }
+    
+    // Grab the locale
+    std::string s_Locale = GetLocaleName();
+    
+    // Check for file existence
+    std::string s_LocaleFile = s_DirPath + s_Locale + s_FileExtension;
+    
+    if (access(s_LocaleFile.c_str(), F_OK) == 0) 
+    {
+        return s_LocaleFile;
+    }
+    
+    // Doesn't exist, return default
+    return s_DirPath + MRH_LOCALE_IDENTIFIER_DEFAULT + s_FileExtension;
 }

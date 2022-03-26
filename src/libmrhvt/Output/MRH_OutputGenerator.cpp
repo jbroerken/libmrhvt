@@ -89,39 +89,27 @@ namespace
 // Constructor / Destructor
 //*************************************************************************************
 
+MRH_OutputGenerator::MRH_OutputGenerator(std::deque<MRH_Sentence>& dq_Sentence,
+                                         std::deque<MRH_Placement>& dq_Placement,
+                                         std::unordered_map<MRH_Uint32, std::deque<MRH_Word>>& m_Word)
+{
+    this->dq_Sentence.swap(dq_Sentence);
+    this->dq_Placement.swap(dq_Placement);
+    
+    for (auto& Words : m_Word)
+    {
+        auto Result = this->m_Word.insert(std::make_pair(Words.first, std::deque<MRH_Word>()));
+        
+        if (Result.second == false)
+        {
+            throw MRH_VTException("Failed to insert word group!");
+        }
+        
+        Result.first->second.swap(Words.second);
+    }
+}
+
 MRH_OutputGenerator::MRH_OutputGenerator(std::string const& s_FilePath)
-{
-    try
-    {
-        SetupFile(s_FilePath);
-    }
-    catch (MRH_VTException& e)
-    {
-        throw;
-    }
-}
-
-MRH_OutputGenerator::MRH_OutputGenerator(std::string s_DirPath,
-                                         std::string const& s_FileName)
-{
-    try
-    {
-        SetupFile(MRH_LocalisedPath::GetPath(s_DirPath, s_FileName));
-    }
-    catch (MRH_VTException& e)
-    {
-        throw;
-    }
-}
-
-MRH_OutputGenerator::~MRH_OutputGenerator() noexcept
-{}
-
-//*************************************************************************************
-// Setup
-//*************************************************************************************
-
-void MRH_OutputGenerator::SetupFile(std::string const& s_FilePath)
 {
     try
     {
@@ -175,6 +163,9 @@ void MRH_OutputGenerator::SetupFile(std::string const& s_FilePath)
         throw MRH_VTException(e.what());
     }
 }
+
+MRH_OutputGenerator::~MRH_OutputGenerator() noexcept
+{}
 
 //*************************************************************************************
 // Generate
@@ -308,133 +299,46 @@ void MRH_OutputGenerator::AddSentence(MRH_Sentence const& c_Sentence) noexcept
 }
 
 //*************************************************************************************
-// Remove
+// Clear
 //*************************************************************************************
 
-void MRH_OutputGenerator::RemoveWord(MRH_Uint32 u32_GroupID, size_t us_Word)
+void MRH_OutputGenerator::ClearWords(MRH_Uint32 u32_WordGroup) noexcept
 {
-    auto Group = m_Word.find(u32_GroupID);
-    
-    if (Group == m_Word.end())
-    {
-        throw MRH_VTException("Invalid group id " + std::to_string(u32_GroupID) + " given!");
-    }
-    else if (Group->second.size() <= us_Word)
-    {
-        throw MRH_VTException("Invalid word position " + std::to_string(us_Word) + " given!");
-    }
-    
-    Group->second.erase(Group->second.begin() + us_Word);
+    m_Word.erase(u32_WordGroup);
 }
 
-void MRH_OutputGenerator::RemovePlacement(size_t us_Placement)
+void MRH_OutputGenerator::ClearPlacements() noexcept
 {
-    if (dq_Placement.size() <= us_Placement)
-    {
-        throw MRH_VTException("Invalid placement position " + std::to_string(us_Placement) + " given!");
-    }
-    
-    dq_Placement.erase(dq_Placement.begin() + us_Placement);
+    dq_Placement.clear();
 }
 
-void MRH_OutputGenerator::RemoveSentence(size_t us_Sentence)
+void MRH_OutputGenerator::ClearSentences() noexcept
 {
-    if (dq_Sentence.size() <= us_Sentence)
-    {
-        throw MRH_VTException("Invalid sentence position " + std::to_string(us_Sentence) + " given!");
-    }
-    
-    dq_Sentence.erase(dq_Sentence.begin() + us_Sentence);
+    dq_Sentence.clear();
 }
 
 //*************************************************************************************
 // Getters
 //*************************************************************************************
 
-size_t MRH_OutputGenerator::GetSentenceCount() const noexcept
+std::deque<MRH_Sentence> const& MRH_OutputGenerator::GetSentences() const noexcept
 {
-    return dq_Sentence.size();
+    return dq_Sentence;
 }
 
-size_t MRH_OutputGenerator::GetPlacementCount() const noexcept
+std::deque<MRH_Placement> const& MRH_OutputGenerator::GetPlacements() const noexcept
 {
-    return dq_Placement.size();
+    return dq_Placement;
 }
 
-size_t MRH_OutputGenerator::GetWordCount(MRH_Uint32 u32_GroupID) const noexcept
+std::deque<MRH_Word> const& MRH_OutputGenerator::GetWords(MRH_Uint32 u32_WordGroup) const
 {
-    auto Group = m_Word.find(u32_GroupID);
-    return Group != m_Word.end() ? Group->second.size() : 0;
-}
-
-MRH_Placement& MRH_OutputGenerator::GetPlacement(size_t us_Placement)
-{
-    if (dq_Placement.size() <= us_Placement)
+    auto Group = m_Word.find(u32_WordGroup);
+    
+    if (Group != m_Word.end())
     {
-        throw MRH_VTException("Invalid placement position " + std::to_string(us_Placement) + " given!");
+        return Group->second;
     }
     
-    return dq_Placement[us_Placement];
-}
-
-MRH_Placement const& MRH_OutputGenerator::GetPlacement(size_t us_Placement) const
-{
-    if (dq_Placement.size() <= us_Placement)
-    {
-        throw MRH_VTException("Invalid placement position " + std::to_string(us_Placement) + " given!");
-    }
-    
-    return dq_Placement[us_Placement];
-}
-
-MRH_Sentence& MRH_OutputGenerator::GetSentence(size_t us_Sentence)
-{
-    if (dq_Sentence.size() <= us_Sentence)
-    {
-        throw MRH_VTException("Invalid sentence position " + std::to_string(us_Sentence) + " given!");
-    }
-    
-    return dq_Sentence[us_Sentence];
-}
-
-MRH_Sentence const& MRH_OutputGenerator::GetSentence(size_t us_Sentence) const
-{
-    if (dq_Sentence.size() <= us_Sentence)
-    {
-        throw MRH_VTException("Invalid sentence position " + std::to_string(us_Sentence) + " given!");
-    }
-    
-    return dq_Sentence[us_Sentence];
-}
-
-MRH_Word& MRH_OutputGenerator::GetWord(MRH_Uint32 u32_GroupID, size_t us_Word)
-{
-    auto Group = m_Word.find(u32_GroupID);
-    
-    if (Group == m_Word.end())
-    {
-        throw MRH_VTException("Invalid group id " + std::to_string(u32_GroupID) + " given!");
-    }
-    else if (Group->second.size() <= us_Word)
-    {
-        throw MRH_VTException("Invalid word position " + std::to_string(us_Word) + " given!");
-    }
-    
-    return Group->second[us_Word];
-}
-
-MRH_Word const& MRH_OutputGenerator::GetWord(MRH_Uint32 u32_GroupID, size_t us_Word) const
-{
-    auto Group = m_Word.find(u32_GroupID);
-    
-    if (Group == m_Word.end())
-    {
-        throw MRH_VTException("Invalid group id " + std::to_string(u32_GroupID) + " given!");
-    }
-    else if (Group->second.size() <= us_Word)
-    {
-        throw MRH_VTException("Invalid word position " + std::to_string(us_Word) + " given!");
-    }
-    
-    return Group->second[us_Word];
+    throw MRH_VTException("Unknown word group!");
 }

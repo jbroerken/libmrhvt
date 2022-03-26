@@ -17,7 +17,4 @@ Library Macros
 
 Internal Macros
 ---------------
-.. toctree::
-  :maxdepth: 1
-
-  _Internal/libmrhvt_Directory/Log/MRH_ConversationLog/MRH_CONVERSATION_LOG_SIZE_MAX
+None.

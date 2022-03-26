@@ -31,7 +31,6 @@
 
 // Project
 #include "../../../include/libmrhvt/libmrhvt/Input/MRH_InputTrigger.h"
-#include "../../../include/libmrhvt/libmrhvt/String/MRH_LocalisedPath.h"
 #include "../../../include/libmrhvt/libmrhvt/String/MRH_Convert.h"
 #include "../../../include/libmrhvt/libmrhvt/String/MRH_Compare.h"
 
@@ -81,41 +80,16 @@ namespace
 // Constructor / Destructor
 //*************************************************************************************
 
+MRH_InputTrigger::MRH_InputTrigger(TriggerCompareMethod e_CompareMethod,
+                                   MRH_Sfloat64 f64_LSSimilarity,
+                                   std::deque<MRH_Trigger>& dq_Trigger) noexcept : e_CompareMethod(e_CompareMethod),
+                                                                                   f64_LSSimilarity(f64_LSSimilarity)
+{
+    this->dq_Trigger.swap(dq_Trigger);
+}
+
 MRH_InputTrigger::MRH_InputTrigger(std::string const& s_FilePath) : e_CompareMethod(DEFAULT_COMPARE),
                                                                     f64_LSSimilarity(MRH_StringCompareLS::f64_RequiredMax)
-{
-    try
-    {
-        SetupFile(s_FilePath);
-    }
-    catch (MRH_VTException& e)
-    {
-        throw;
-    }
-}
-
-MRH_InputTrigger::MRH_InputTrigger(std::string s_DirPath,
-                                   std::string const& s_FileName) : e_CompareMethod(DEFAULT_COMPARE),
-                                                                    f64_LSSimilarity(MRH_StringCompareLS::f64_RequiredMax)
-{
-    try
-    {
-        SetupFile(MRH_LocalisedPath::GetPath(s_DirPath, s_FileName));
-    }
-    catch (MRH_VTException& e)
-    {
-        throw;
-    }
-}
-
-MRH_InputTrigger::~MRH_InputTrigger() noexcept
-{}
-
-//*************************************************************************************
-// Setup
-//*************************************************************************************
-
-void MRH_InputTrigger::SetupFile(std::string const& s_FilePath)
 {
     try
     {
@@ -162,6 +136,9 @@ void MRH_InputTrigger::SetupFile(std::string const& s_FilePath)
     }
 }
 
+MRH_InputTrigger::~MRH_InputTrigger() noexcept
+{}
+
 //*************************************************************************************
 // Evaluate
 //*************************************************************************************
@@ -192,7 +169,7 @@ MRH_InputTrigger::Evaluation MRH_InputTrigger::Evaluate(std::string s_String, MR
     MRH_StringConvert::ToLower(s_String);
     
     // Grab triggers which match the weight requirement
-    // NOTE: <Trigger Value, Total Trigger Weight>
+    // @NOTE: <Trigger Value, Total Trigger Weight>
     std::unordered_map<MRH_Sint32, MRH_Uint32> m_Matches;
     std::unordered_map<MRH_Sint32, MRH_Uint32>::iterator It;
     
@@ -242,47 +219,18 @@ void MRH_InputTrigger::AddTrigger(MRH_Trigger const& c_Trigger) noexcept
     dq_Trigger.emplace_back(c_Trigger);
 }
 
-//*************************************************************************************
-// Remove
-//*************************************************************************************
-
-void MRH_InputTrigger::RemoveTrigger(size_t us_Trigger)
+void MRH_InputTrigger::ClearTriggers() noexcept
 {
-    if (dq_Trigger.size() <= us_Trigger)
-    {
-        throw MRH_VTException("Invalid trigger position " + std::to_string(us_Trigger) + " specified!");
-    }
-    
-    dq_Trigger.erase(dq_Trigger.begin() + us_Trigger);
+    dq_Trigger.clear();
 }
 
 //*************************************************************************************
 // Getters
 //*************************************************************************************
 
-size_t MRH_InputTrigger::GetTriggerCount() const noexcept
+std::deque<MRH_Trigger> const& MRH_InputTrigger::GetTriggers() const noexcept
 {
-    return dq_Trigger.size();
-}
-
-MRH_Trigger& MRH_InputTrigger::GetTrigger(size_t us_Trigger)
-{
-    if (dq_Trigger.size() <= us_Trigger)
-    {
-        throw MRH_VTException("Invalid trigger position " + std::to_string(us_Trigger) + " specified!");
-    }
-    
-    return dq_Trigger[us_Trigger];
-}
-
-MRH_Trigger const& MRH_InputTrigger::GetTrigger(size_t us_Trigger) const
-{
-    if (dq_Trigger.size() <= us_Trigger)
-    {
-        throw MRH_VTException("Invalid trigger position " + std::to_string(us_Trigger) + " specified!");
-    }
-    
-    return dq_Trigger[us_Trigger];
+    return dq_Trigger;
 }
 
 MRH_InputTrigger::TriggerCompareMethod MRH_InputTrigger::GetCompareMethod() const noexcept
@@ -293,34 +241,4 @@ MRH_InputTrigger::TriggerCompareMethod MRH_InputTrigger::GetCompareMethod() cons
 MRH_Sfloat64 MRH_InputTrigger::GetLSSimilarity() const noexcept
 {
     return f64_LSSimilarity;
-}
-
-//*************************************************************************************
-// Setters
-//*************************************************************************************
-
-void MRH_InputTrigger::SetCompareMethod(TriggerCompareMethod e_CompareMethod)
-{
-    if (e_CompareMethod > TRIGGER_COMPARE_METHOD_MAX)
-    {
-        throw MRH_VTException("Invalid compare method " + std::to_string(e_CompareMethod) + " specified!");
-    }
-    
-    this->e_CompareMethod = e_CompareMethod;
-}
-
-void MRH_InputTrigger::SetLSSimilarity(MRH_Sfloat64 f64_Similarity) noexcept
-{
-    if (f64_Similarity < MRH_StringCompareLS::f64_RequiredMin)
-    {
-        f64_LSSimilarity = MRH_StringCompareLS::f64_RequiredMin;
-    }
-    else if (f64_Similarity > MRH_StringCompareLS::f64_RequiredMax)
-    {
-        f64_LSSimilarity = MRH_StringCompareLS::f64_RequiredMax;
-    }
-    else
-    {
-        f64_LSSimilarity = f64_Similarity;
-    }
 }

@@ -46,7 +46,18 @@ MRH_Word::MRH_Word(std::string const& s_String,
         throw MRH_VTException("Invalid string given!");
     }
     
-    SetUseChance(f64_UseChance);
+    if (f64_UseChance < f64_UseChanceMin)
+    {
+        this->f64_UseChance = f64_UseChanceMin;
+    }
+    else if (f64_UseChance > f64_UseChanceMax)
+    {
+        this->f64_UseChance = f64_UseChanceMax;
+    }
+    else
+    {
+        this->f64_UseChance = f64_UseChance;
+    }
 }
 
 MRH_Word::~MRH_Word() noexcept
@@ -69,34 +80,4 @@ MRH_Uint32 MRH_Word::GetGroupID() const noexcept
 MRH_Sfloat64 MRH_Word::GetUseChance() const noexcept
 {
     return f64_UseChance;
-}
- 
-//*************************************************************************************
-// Setters
-//*************************************************************************************
- 
-void MRH_Word::SetString(std::string const& s_String)
-{
-    if (s_String.length() == 0)
-    {
-        throw MRH_VTException("Invalid string given!");
-    }
-    
-    this->s_String = s_String;
-}
- 
-void MRH_Word::SetUseChance(MRH_Sfloat64 f64_UseChance) noexcept
-{
-    if (f64_UseChance < f64_UseChanceMin)
-    {
-        this->f64_UseChance = f64_UseChanceMin;
-    }
-    else if (f64_UseChance > f64_UseChanceMax)
-    {
-        this->f64_UseChance = f64_UseChanceMax;
-    }
-    else
-    {
-        this->f64_UseChance = f64_UseChance;
-    }
 }

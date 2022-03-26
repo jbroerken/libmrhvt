@@ -57,25 +57,27 @@ public:
     //*************************************************************************************
     // Constructor / Destructor
     //*************************************************************************************
-     
-     /**
-      *  Default constructor.
-      *
-      *  \param s_FilePath The full path to the input trigger file.
-      */
-     
-     MRH_InputTrigger(std::string const& s_FilePath);
-     
-     /**
-      *  Locale based constructor.
-      *
-      *  \param s_DirPath The full path to the input trigger directory.
-      *  \param s_FileName The name of the input trigger file.
-      */
-     
-     MRH_InputTrigger(std::string s_DirPath,
-                      std::string const& s_FileName);
     
+    /**
+     *  Default constructor.
+     *
+     *  \param e_CompareMethod The trigger compare method to use.
+     *  \param f64_LSSimilarity The minimal required levenstein similarity.
+     *  \param dq_Trigger The triggers to include. The deque is consumed.
+     */
+    
+    MRH_InputTrigger(TriggerCompareMethod e_CompareMethod,
+                     MRH_Sfloat64 f64_LSSimilarity,
+                     std::deque<MRH_Trigger>& dq_Trigger) noexcept;
+    
+    /**
+     *  File constructor.
+     *
+     *  \param s_FilePath The full path to the input trigger file.
+     */
+     
+    MRH_InputTrigger(std::string const& s_FilePath);
+     
     /**
      *  Default destructor.
      */
@@ -99,7 +101,7 @@ public:
     Evaluation Evaluate(std::string s_String, MRH_Uint32 u32_RequiredWeight) const noexcept;
     
     //*************************************************************************************
-    // Add
+    // Trigger
     //*************************************************************************************
     
     /**
@@ -110,49 +112,23 @@ public:
     
     void AddTrigger(MRH_Trigger const& c_Trigger) noexcept;
     
-    //*************************************************************************************
-    // Remove
-    //*************************************************************************************
-    
     /**
-     *  Remove a trigger.
-     *
-     *  \param us_Trigger The index of the trigger to remove.
+     *  Clear all triggers.
      */
     
-    void RemoveTrigger(size_t us_Trigger);
+    void ClearTriggers() noexcept;
     
     //*************************************************************************************
     // Getters
     //*************************************************************************************
     
     /**
-     *  Get the trigger count.
+     *  Get all current triggers.
      *
-     *  \return The trigger count.
+     *  \return All current triggers.
      */
     
-    size_t GetTriggerCount() const noexcept;
-    
-    /**
-     *  Get a trigger.
-     *
-     *  \param us_Trigger The index of the trigger requested.
-     *
-     *  \return The requested trigger.
-     */
-    
-    MRH_Trigger& GetTrigger(size_t us_Trigger);
-    
-    /**
-     *  Get a trigger.
-     *
-     *  \param us_Trigger The index of the trigger requested.
-     *
-     *  \return The requested trigger.
-     */
-    
-    MRH_Trigger const& GetTrigger(size_t us_Trigger) const;
+    std::deque<MRH_Trigger> const& GetTriggers() const noexcept;
     
     /**
      *  Get the trigger compare method.
@@ -170,39 +146,7 @@ public:
     
     MRH_Sfloat64 GetLSSimilarity() const noexcept;
     
-    //*************************************************************************************
-    // Setters
-    //*************************************************************************************
-    
-    /**
-     *  Update the trigger compare method.
-     *
-     *  \param e_CompareMethod The new trigger compare method.
-     */
-    
-    void SetCompareMethod(TriggerCompareMethod e_CompareMethod);
-    
-    /**
-     *  Update the required levenshtein similarity.
-     *
-     *  \param f64_Similarity The new levenshtein similarity required.
-     */
-    
-    void SetLSSimilarity(MRH_Sfloat64 f64_Similarity) noexcept;
-    
 private:
-
-    //*************************************************************************************
-    // Setup
-    //*************************************************************************************
-
-    /**
-     *  Setup input trigger with file data.
-     *
-     *  \param s_FilePath The full path to the input trigger file.
-     */
-    
-    void SetupFile(std::string const& s_FilePath);
     
     //*************************************************************************************
     // Evaluate

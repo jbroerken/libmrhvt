@@ -97,34 +97,6 @@ public:
     MRH_Sint32 GetValue() const noexcept;
     
     //*************************************************************************************
-    // Setters
-    //*************************************************************************************
-    
-    /**
-     *  Update the trigger string.
-     *
-     *  \param s_String The new UTF-8 string.
-     */
-    
-    void SetString(std::string const& s_String);
-    
-    /**
-     *  Update the trigger weight.
-     *
-     *  \param u32_Weight The new weight.
-     */
-    
-    void SetWeight(MRH_Uint32 u32_Weight) noexcept;
-    
-    /**
-     *  Update the trigger value.
-     *
-     *  \param s32_Value The new value.
-     */
-    
-    void SetValue(MRH_Sint32 s32_Value) noexcept;
-    
-    //*************************************************************************************
     // Data
     //*************************************************************************************
     

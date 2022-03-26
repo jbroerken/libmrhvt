@@ -78,26 +78,6 @@ public:
     
     MRH_Uint32 GetGroupID() const noexcept;
     
-    //*************************************************************************************
-    // Setters
-    //*************************************************************************************
-    
-    /**
-     *  Set the word string.
-     *
-     *  \param s_String The new UTF-8 string.
-     */
-    
-    void SetString(std::string const& s_String);
-    
-    /**
-     *  Set the word group id.
-     *
-     *  \param u32_GroupID The word group id.
-     */
-    
-    void SetGroupID(MRH_Uint32 u32_GroupID) noexcept;
-    
 private:
     
     //*************************************************************************************

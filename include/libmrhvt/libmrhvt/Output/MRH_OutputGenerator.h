@@ -47,21 +47,23 @@ public:
     
     /**
      *  Default constructor.
+     *  
+     *  \param dq_Sentence The sentences for the generator. The deque is consumed.
+     *  \param dq_Placement The placements for the generator. The deque is consumed.
+     *  \param m_Word The words for the generator. The words are consumed.
+     */
+    
+    MRH_OutputGenerator(std::deque<MRH_Sentence>& dq_Sentence,
+                        std::deque<MRH_Placement>& dq_Placement,
+                        std::unordered_map<MRH_Uint32, std::deque<MRH_Word>>& m_Word);
+    
+    /**
+     *  File constructor.
      *
      *  \param s_FilePath The full path to the output file.
      */
     
     MRH_OutputGenerator(std::string const& s_FilePath);
-    
-    /**
-     *  Locale based constructor.
-     *
-     *  \param s_DirPath The full path to the output directory.
-     *  \param s_FileName The name of the output file.
-     */
-    
-    MRH_OutputGenerator(std::string s_DirPath,
-                        std::string const& s_FileName);
     
     /**
      *  Default destructor.
@@ -110,140 +112,61 @@ public:
     void AddSentence(MRH_Sentence const& c_Sentence) noexcept;
     
     //*************************************************************************************
-    // Remove
+    // Clear
     //*************************************************************************************
     
     /**
-     *  Remove a word from the output generator.
-     *
-     *  \param u32_GroupID The group id of the word to remove.
-     *  \param us_Word The index of the word word in the group to remove.
+     *  Remove all words from the output generator.
+     *  
+     *  \param u32_WordGroup The word group to clear.
      */
     
-    void RemoveWord(MRH_Uint32 u32_GroupID, size_t us_Word);
+    void ClearWords(MRH_Uint32 u32_WordGroup) noexcept;
     
     /**
-     *  Remove a placement from the output.
-     *
-     *  \param us_Placement The index of the sentence to remove.
+     *  Remove all placements from the output.
      */
     
-    void RemovePlacement(size_t us_Placement);
+    void ClearPlacements() noexcept;
     
     /**
-     *  Remove a sentence from the output.
-     *
-     *  \param us_Sentence The index of the sentence to remove.
+     *  Remove all sentences from the output.
      */
     
-    void RemoveSentence(size_t us_Sentence);
+    void ClearSentences() noexcept;
     
     //*************************************************************************************
     // Getters
     //*************************************************************************************
     
     /**
-     *  Get the sentence count.
+     *  Get the generator sentences.
      *
-     *  \return The sentence count.
+     *  \return The generator sentences.
      */
     
-    size_t GetSentenceCount() const noexcept;
+    std::deque<MRH_Sentence> const& GetSentences() const noexcept;
     
     /**
-     *  Get the placement count.
+     *  Get the generator placements.
      *
-     *  \return The placement count.
+     *  \return The generator placements.
      */
     
-    size_t GetPlacementCount() const noexcept;
+    std::deque<MRH_Placement> const& GetPlacements() const noexcept;
     
     /**
-     *  Get the word count.
-     *
-     *  \param u32_GroupID The word group id.
+     *  Get the generator words for a word group.
      *  
-     *  \return The word count.
+     *  \param u32_WordGroup The word group for the words.
+     *
+     *  \return The generator words for the group.
      */
     
-    size_t GetWordCount(MRH_Uint32 u32_GroupID) const noexcept;
-    
-    /**
-     *  Get a sentence.
-     *
-     *  \param us_Sentence The index of the sentence to get.
-     *
-     *  \return The requested sentence.
-     */
-    
-    MRH_Sentence& GetSentence(size_t us_Sentence);
-    
-    /**
-     *  Get a sentence.
-     *
-     *  \param us_Sentence The index of the sentence to get.
-     *
-     *  \return The requested sentence.
-     */
-    
-    MRH_Sentence const& GetSentence(size_t us_Sentence) const;
-    
-    /**
-     *  Get a placement.
-     *
-     *  \param us_Placement The index of the placement to get.
-     *
-     *  \return The requested placement.
-     */
-    
-    MRH_Placement& GetPlacement(size_t us_Placement);
-    
-    /**
-     *  Get a placement.
-     *
-     *  \param us_Placement The index of the placement to get.
-     *
-     *  \return The requested placement.
-     */
-    
-    MRH_Placement const& GetPlacement(size_t us_Placement) const;
-    
-    /**
-     *  Get a word.
-     *
-     *  \param u32_GroupID The word group id of the word.
-     *  \param us_Word The index of the word in the group to get.
-     *
-     *  \return The requested word.
-     */
-    
-    MRH_Word& GetWord(MRH_Uint32 u32_GroupID, size_t us_Word);
-    
-    /**
-     *  Get a word.
-     *
-     *  \param u32_GroupID The word group id of the word.
-     *  \param us_Word The index of the word in the group to get.
-     *
-     *  \return The requested word.
-     */
-    
-    MRH_Word const& GetWord(MRH_Uint32 u32_GroupID, size_t us_Word) const;
+    std::deque<MRH_Word> const& GetWords(MRH_Uint32 u32_WordGroup) const;
     
 private:
 
-    //*************************************************************************************
-    // Setup
-    //*************************************************************************************
-
-    /**
-     *  Setup output with file data.
-     *
-     *  \param s_FilePath The full path to the output file.
-     */
-
-    void SetupFile(std::string const& s_FilePath);
-    
     //*************************************************************************************
     // Generate
     //*************************************************************************************
